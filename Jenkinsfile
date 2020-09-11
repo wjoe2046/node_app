@@ -10,9 +10,11 @@ pipeline {
             }
         }
         stage('Push to Dockerhub'){
-            withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', passwordVariable: 'docker-hub-pw', usernameVariable: 'docker-hub-login')]) {
-                sh "docker login -u ${docker-hub-login} -p ${docker-hub-pw}"
-                sh "docker push wjoe2046/nodeapp:${DOCKER_TAG}"
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', passwordVariable: 'docker-hub-pw', usernameVariable: 'docker-hub-login')]) {
+                    sh "docker login -u ${docker-hub-login} -p ${docker-hub-pw}"
+                    sh "docker push wjoe2046/nodeapp:${DOCKER_TAG}"
+                }
             }
         }
     }
