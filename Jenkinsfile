@@ -26,6 +26,8 @@ pipeline {
                     script{
                         try{
                             sh "ssh ubuntu@34.220.252.148 kubectl apply -f app-deployment.yml"
+                            sh "ssh ubuntu@34.220.252.148 kubectl apply -f node-app-pod.yml.yml"
+
                         } catch(error){
                             sh "ssh ubuntu@34.220.252.148 kubectl create -f . "
                         }

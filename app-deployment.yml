@@ -13,25 +13,3 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nodeapp
-
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nodeapp
-  template:
-    metadata:
-      labels:
-        app: nodeapp
-    spec:
-      containers:
-        - name: nodeapp
-          image: wjoe2046/nodeapp:tagVersion
-          ports:
-            - containerPort: 8080
