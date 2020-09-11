@@ -6,7 +6,7 @@ pipeline {
     stages{
         stage('Build docker image'){
             steps{
-                sh "docker build . -t kammana/nodeapp:${DOCKER_TAG}"
+                sh "docker build . -t wjoe2046/nodeapp:${DOCKER_TAG}"
             }
         }
         stage('Push to Dockerhub'){
@@ -25,4 +25,3 @@ def getDockerTag(){
     def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag
 }
-ddd
